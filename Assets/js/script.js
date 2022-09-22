@@ -11,6 +11,20 @@ let questionMsg= document.querySelector('.question-msg');
 let answersList = document.querySelector('#answers');
 let line=document.querySelector('#line');
 
+//initialize form elements for initials input and Button
+
+let inputForm=document.createElement('FORM');
+inputForm.method='POST';
+let labelEl=document.createElement('LABEL');
+labelEl.for='initials';
+labelEl.textContent='Enter initials:'
+let initialsInput=document.createElement('INPUT');
+initialsInput.type='TEXT';
+initialsInput.name='initials';
+initialsInput.id='initials';
+let submitButton=document.createElement('BUTTON');
+submitButton.setAttribute("class","button");
+
 let time=60; // time default to 60 seconds
 let quizDone = false;
 let question = 0; //keep count of current question number
@@ -92,6 +106,13 @@ function quizOver() {
     questionMsg.textContent="";
 
     questionContent.textContent='Your final score is '+currentScore+' out of '+questions.length;
+    inputForm.appendChild(labelEl);
+    inputForm.appendChild(initialsInput);
+    inputForm.appendChild(submitButton);
+    questionContent.appendChild(inputForm);
+
+
+
 }
 
 // start button listener that launches the renderQuestions and startTimer functions
